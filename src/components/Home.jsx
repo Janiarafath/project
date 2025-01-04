@@ -1,15 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
-import emailjs from 'emailjs-com';
-import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom'; // useNavigate for page navigation
+
+import { Link } from 'react-router-dom'; // useNavigate for page navigation
 import './Home.css';
 
 function Home() {
   const canvasRef = useRef(null);
-  const formRef = useRef(null);
+  { /* const formRef = useRef(null); */}
   const [isScrolled, setIsScrolled] = useState(false);
   const animationFrameId = useRef(null);
-  const navigate = useNavigate(); // Using useNavigate hook for navigation
+  {/* const navigate = useNavigate(); */} // Using useNavigate hook for navigation
 
   // Scroll functionality
   const scrollToFormSection = () => {
@@ -83,7 +82,7 @@ function Home() {
   }, []);
 
   // Function to send email after payment success
-  const sendEmail = (e) => {
+ { /* const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
@@ -103,10 +102,10 @@ function Home() {
           alert('Failed to send email. Please try again.');
         }
       );
-  };
+  }; /*}
 
   // Razorpay payment handler
-  const handleRazorpay = () => {
+  { /* const handleRazorpay = () => {
     const options = {
       key: 'YOUR_RAZORPAY_KEY',
       amount: 10000,
@@ -135,7 +134,7 @@ function Home() {
 
     const razorpay = new window.Razorpay(options);
     razorpay.open();
-  };
+  }; */}
 
   return (
     <div className="home">
@@ -178,55 +177,32 @@ function Home() {
             <h2 className="form-heading">
               Let us help you unlock your potential and secure the job you
               deserve!
-            </h2>
-            <StyledContactForm>
-              <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
-                <h2>Interested?</h2>
-                <label htmlFor="first_name">First Name</label>
-                <input
-                  type="text"
-                  id="first_name"
-                  name="first_name"
-                  placeholder="Your First Name"
-                  required
-                />
-                <label htmlFor="last_name">Last Name</label>
-                <input
-                  type="text"
-                  id="last_name"
-                  name="last_name"
-                  placeholder="Your Last Name"
-                  required
-                />
-                <label htmlFor="user_email">Email</label>
-                <input
-                  type="email"
-                  id="user_email"
-                  name="user_email"
-                  placeholder="Your Email"
-                  required
-                />
-                <label htmlFor="amount">Amount</label>
-                <input
-                  type="number"
-                  id="amount"
-                  name="amount"
-                  placeholder="Amount in ₹"
-                  required
-                />
-                <label htmlFor="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder="Enter your message"
-                  required
-                ></textarea>
-                <button type="button" onClick={handleRazorpay}>
-                  Next
-                </button>
-              </form>
-            </StyledContactForm>
+            </h2> {/* do here*/}
+            <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '50vh',
+        overflow: 'hidden',
+        background: 'url(https://media.giphy.com/media/18304345255962034739/giphy.gif) no-repeat center center fixed', // Using the GIF as the background
+        backgroundSize: 'cover', // Makes sure the GIF covers the entire screen
+      }}
+    >
+      {/* Content displayed over the background */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          color: '#fff',
+          textAlign: 'center',
+        }}
+      >
+        <h1 style={{ fontSize: '4rem' }}>{/* */}</h1>
+        <p>{/* */}</p>
+      </div> {/* do here*/}
+    </div>
           </div>
         </main>
       </div>
@@ -234,7 +210,7 @@ function Home() {
   );
 }
 
-const StyledContactForm = styled.div`
+{ /* const StyledContactForm = styled.div`
   width: 100%;
   max-width: 600px;
   margin: 2rem auto;
@@ -295,7 +271,7 @@ const StyledContactForm = styled.div`
       }
     }
   }
-`;
+`; */}
 
 export default Home;
 
