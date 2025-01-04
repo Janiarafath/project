@@ -1,0 +1,58 @@
+.thank-you-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.thank-you-content {
+    text-align: center;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+}
+
+.thank-you-heading {
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+
+.thank-you-message {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    color: #7f8c8d;
+}
+
+.thank-you-details {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.thank-you-actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.go-home-button,
+.contact-support-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #f37254;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.go-home-button:hover,
+.contact-support-button:hover {
+    background-color: #d85a42;
+}

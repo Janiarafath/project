@@ -1,0 +1,848 @@
+/* General body styling */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Ensure the body takes up full screen height */
+}
+
+
+/* Home section */
+
+.home {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-height: 100vh;
+    /* Ensure full screen height */
+    padding-top: 0;
+    /* Avoid unnecessary space at the top */
+}
+
+
+/* Content wrapper */
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+
+/* Navbar styling */
+
+.header {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: transparent;
+    box-shadow: none;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Keep navbar transparent when scrolled */
+
+.header.scrolled {
+    background-color: transparent;
+}
+
+
+/* Navbar container */
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+}
+
+
+/* Logo styling */
+
+.logo {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+
+/* Navigation styling */
+
+.nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 0 2rem;
+}
+
+
+/* Navigation link styling */
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+    padding: 0.7rem 1.4rem;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+
+/* Navigation separator */
+
+.nav-separator {
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 0.25rem;
+}
+
+
+/* Start button styling */
+
+.start-button {
+    background-color: rgb(230, 230, 230);
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background-color 0.2s ease;
+    margin-right: 45px;
+}
+
+.start-button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+
+/* Main section styling */
+
+.main {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    flex-grow: 1;
+    height: auto;
+    /* Allow it to adjust its height naturally */
+}
+
+
+/* Hero content */
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+    box-sizing: border-box;
+    max-width: 800px;
+    margin-top: 10vh;
+    z-index: 1;
+}
+
+.booking-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+
+/* Title styling */
+
+.title {
+    font-size: 2.5rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+
+/* Description styling */
+
+.description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+
+/* Button group */
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}
+
+
+/* Primary and Secondary button styling */
+
+.primary-button,
+.secondary-button {
+    background-color: #f37254;
+    color: #fff;
+    border: 1px solid #f37254;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+/* Button hover effect */
+
+.primary-button:hover,
+.secondary-button:hover {
+    background-color: #e55a3d;
+    border-color: #e55a3d;
+}
+
+
+/* Form section */
+
+.form-section {
+    margin-top: 4rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+    margin: 0 auto;
+    /* Center form */
+}
+
+
+/* Form heading */
+
+.form-heading {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 5rem;
+}
+
+
+/* Form styling */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+
+/* Input and textarea styling */
+
+input,
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #444;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    /* Prevent overflow */
+}
+
+
+/* Placeholder styling */
+
+input::placeholder,
+textarea::placeholder {
+    color: #888;
+}
+
+
+/* Submit button */
+
+button[type="button"] {
+    padding: 1rem;
+    background-color: #f37254;
+    color: #fff;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+
+/* Submit button hover effect */
+
+button[type="button"]:hover {
+    background-color: #e55a3d;
+}
+
+
+/* Responsive design for tablets */
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+    .nav {
+        gap: 1rem;
+    }
+    .nav-link,
+    .start-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    .hero-content {
+        padding: 1rem;
+    }
+    .title {
+        font-size: 2rem;
+    }
+    .description {
+        font-size: 1rem;
+    }
+    .button-group {
+        flex-direction: row;
+    }
+    .primary-button,
+    .secondary-button {
+        font-size: 1rem;
+        padding: 0.8rem 1.8rem;
+    }
+    .form-heading {
+        font-size: 1.5rem;
+    }
+    input,
+    textarea {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+    button[type="button"] {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}
+
+
+/* Responsive design for mobile devices */
+
+@media (max-width: 480px) {
+    .home {
+        padding: 1rem;
+    }
+    .hero-content {
+        padding: 0.5rem;
+    }
+    .title {
+        font-size: 1.8rem;
+    }
+    .form-section {
+        padding: 1rem;
+    }
+}
+
+
+/* Footer styles */
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 1px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+    /* Pushes the footer to the bottom */
+    position: relative;
+    bottom: 0;
+}
+
+.background-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Match the height of the .hero-content */
+    z-index: 1;
+    pointer-events: none;
+    /* Prevent interference with the content */
+}
+
+
+/* General body styling */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Ensure the body takes up full screen height */
+    position: relative;
+    background: linear-gradient(to bottom, #111 0%, #000 100%);
+}
+
+
+/* Snow animation effect */
+
+@keyframes snow {
+    0% {
+        top: -10%;
+        left: 50%;
+        opacity: 0;
+    }
+    100% {
+        top: 110%;
+        left: 50%;
+        opacity: 1;
+    }
+}
+
+.snowflake {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    animation: snow 10s linear infinite;
+    opacity: 0.8;
+}
+
+.snowflake:nth-child(odd) {
+    font-size: 1.5rem;
+    animation-duration: 12s;
+}
+
+
+/* Home section */
+
+.home {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-height: 100vh;
+    padding-top: 0;
+    /* Avoid unnecessary space at the top */
+}
+
+
+/* Content wrapper */
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+
+/* Navbar styling */
+
+.header {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: transparent;
+    box-shadow: none;
+    transition: background-color 0.3s ease;
+    color: #fff;
+}
+
+
+/* Keep navbar transparent when scrolled */
+
+.header.scrolled {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* Navbar container */
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+}
+
+
+/* Logo styling */
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+
+/* Navigation styling */
+
+.nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 0 2rem;
+}
+
+
+/* Navigation link styling */
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+    padding: 0.7rem 1.4rem;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+
+/* Navigation separator */
+
+.nav-separator {
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 0.25rem;
+}
+
+
+/* Start button styling */
+
+.start-button {
+    background-color: #f1f1f1;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background-color 0.2s ease;
+}
+
+.start-button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+
+/* Main section styling */
+
+.main {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    flex-grow: 1;
+    height: auto;
+    /* Allow it to adjust its height naturally */
+}
+
+
+/* Hero content */
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+    box-sizing: border-box;
+    max-width: 800px;
+    margin-top: 10vh;
+    z-index: 1;
+}
+
+
+/* Title styling */
+
+.title {
+    font-size: 2.5rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+
+/* Description styling */
+
+.description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+
+/* Button group */
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}
+
+
+/* Primary and Secondary button styling */
+
+.primary-button,
+.secondary-button {
+    background-color: #f37254;
+    color: #fff;
+    border: 1px solid #f37254;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+/* Button hover effect */
+
+.primary-button:hover,
+.secondary-button:hover {
+    background-color: #e55a3d;
+    border-color: #e55a3d;
+}
+
+
+/* Footer styles */
+
+.footer {
+    background-color: rgba(15, 14, 14, 0.463);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+    position: relative;
+    bottom: 0;
+}
+
+
+/* Snow effect in footer */
+
+.footer::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+}
+
+
+/* Responsive design for tablets */
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+    .nav {
+        gap: 1rem;
+    }
+    .nav-link,
+    .start-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    .hero-content {
+        padding: 1rem;
+    }
+    .title {
+        font-size: 2rem;
+    }
+    .description {
+        font-size: 1rem;
+    }
+    .button-group {
+        flex-direction: row;
+    }
+    .primary-button,
+    .secondary-button {
+        font-size: 1rem;
+        padding: 0.8rem 1.8rem;
+    }
+    .form-heading {
+        font-size: 1.5rem;
+    }
+    input,
+    textarea {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+    button[type="button"] {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}
+
+
+/* Responsive design for mobile devices */
+
+@media (max-width: 480px) {
+    .home {
+        padding: 1rem;
+    }
+    .hero-content {
+        padding: 0.5rem;
+    }
+    .title {
+        font-size: 1.8rem;
+    }
+    .form-section {
+        padding: 1rem;
+    }
+}
+
+
+/* Snow animation effect */
+
+
+/* Snow animation effect */
+
+@keyframes snow {
+    0% {
+        transform: translateY(-100px);
+    }
+    100% {
+        transform: translateY(100vh);
+        /* Fall to the bottom */
+    }
+}
+
+.snowflake {
+    position: absolute;
+    top: -2em;
+    /* Start above the visible area */
+    font-size: 1.5em;
+    /* Adjust snowflake size */
+    color: white;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.snowflake:nth-child(odd) {
+    font-size: 1.5rem;
+    animation-duration: 5s;
+    /* Set animation duration to 5 seconds */
+}
+
+
+/* Ensure snowflakes are positioned over the content */
+
+.home {
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-height: 100vh;
+    padding-top: 0;
+    background: linear-gradient(to bottom, #111 0%, #000 100%);
+}
+
+.snowflake-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Ensure snowflakes don't interfere with interactions */
+    overflow: hidden;
+    z-index: 999;
+    /* Keep snowflakes above other elements */
+}
+
+
+/* Content wrapper and other styles will remain the same */
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(200vh);
+        /* Snowflakes fall to the bottom of the viewport */
+    }
+}
