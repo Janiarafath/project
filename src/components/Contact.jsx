@@ -108,7 +108,7 @@ function Contact() {
             <h2 className="form-heading">Let us help you unlock your potential and secure the job you deserve!</h2>
             <StyledContactForm>
               <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
-                <h2>Interested?</h2>
+                <h2>Dive in ?</h2>
                 <label htmlFor="first_name">First Name</label>
                 <input type="text" id="first_name" name="first_name" placeholder="Your First Name" required />
                 <label htmlFor="last_name">Last Name</label>
