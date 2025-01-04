@@ -140,9 +140,9 @@ function Contact() {
 
 const StyledContactForm = styled.div`
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 50;
   box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   background-color: rgba(30, 30, 30, 0.8);
