@@ -6,9 +6,9 @@ function ThankYou() {
   return (
     <div className="thank-you-container">
       <div className="thank-you-content">
-        <h1 className="thank-you-heading">Thank You for Your Payment!</h1>
+        <h1 className="thank-you-heading">Thank You for Your Submission!</h1>
         <p className="thank-you-message">
-          Your transaction was successful. We're excited to have you on board! You will receive an email confirmation shortly.
+          We're excited to have you on board! You will receive an email confirmation shortly.
         </p>
         <p className="thank-you-details">
           If you have any questions or need assistance, feel free to <a href="mailto:support@yourcompany.com">contact us</a>.

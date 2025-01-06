@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import ThankYou from "./components/ThankYou"; 
 import Privacy from "./components/privacy";
 import Terms from "./components/terms";
+import Recuriter from "./components/Recuriter"
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/Terms" element={<Terms />} />
           <Route path="/Privacy" element={<Privacy />} />
+          <Route path="/Recuriter" element={<Recuriter />} />
         </Routes>
       </div>
       <Footer />

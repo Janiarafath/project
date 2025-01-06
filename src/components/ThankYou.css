@@ -44,7 +44,7 @@
 .go-home-button,
 .contact-support-button {
     padding: 0.75rem 1.5rem;
-    background-color: #f37254;
+    background-color: black;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -54,5 +54,5 @@
 
 .go-home-button:hover,
 .contact-support-button:hover {
-    background-color: #d85a42;
+    background-color: #707070;
 }

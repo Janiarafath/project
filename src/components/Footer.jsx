@@ -7,7 +7,7 @@ export default function Footer() {
       <MDBContainer className='p-4'></MDBContainer>
 
       <div className="footer text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-  <p>CyberWorld © 2025 </p>
+  <p>FZNO © 2025 </p>
   <div>
     <a href="/terms" style={{ fontWeight: 'bold', color: 'white', marginRight: '15px' }}>
       Terms and Conditions

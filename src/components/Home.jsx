@@ -1,14 +1,18 @@
 import React, { useRef, useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; // useNavigate for page navigation
 import './Home.css';
 
 function Home() {
+  const navigate = useNavigate();
+
+  const handleRecruiterClick = () => {
+    navigate('/Recuriter');
+  };
+
   const canvasRef = useRef(null);
-  { /* const formRef = useRef(null); */}
   const [isScrolled, setIsScrolled] = useState(false);
   const animationFrameId = useRef(null);
-  {/* const navigate = useNavigate(); */} // Using useNavigate hook for navigation
 
   // Scroll functionality
   const scrollToFormSection = () => {
@@ -28,114 +32,6 @@ function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    if (window.location.pathname === '/') {
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext("2d");
-
-      const resizeCanvas = () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      };
-      resizeCanvas();
-      window.addEventListener("resize", resizeCanvas);
-
-      const particles = [];
-      const numParticles = 150;
-
-      for (let i = 0; i < numParticles; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 3 + 1,
-          dx: (Math.random() - 0.5) * 2,
-          dy: (Math.random() - 0.5) * 2,
-        });
-      }
-
-      const animateParticles = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        particles.forEach((particle) => {
-          ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
-          ctx.fill();
-
-          particle.x += particle.dx;
-          particle.y += particle.dy;
-
-          if (particle.x > canvas.width || particle.x < 0) particle.dx = -particle.dx;
-          if (particle.y > canvas.height || particle.y < 0) particle.dy = -particle.dy;
-        });
-
-        animationFrameId.current = requestAnimationFrame(animateParticles);
-      };
-
-      { /*animateParticles(); */}
-
-      return () => {
-        cancelAnimationFrame(animationFrameId.current);
-        window.removeEventListener("resize", resizeCanvas);
-      };
-    }
-  }, []);
-
-  // Function to send email after payment success
- { /* const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        'service_vlhumpe',
-        'template_updated_id',
-        formRef.current,
-        'LJB9OySqh4LPpFqpI'
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          alert('Email sent successfully!');
-        },
-        (error) => {
-          console.log(error.text);
-          alert('Failed to send email. Please try again.');
-        }
-      );
-  }; /*}
-
-  // Razorpay payment handler
-  { /* const handleRazorpay = () => {
-    const options = {
-      key: 'YOUR_RAZORPAY_KEY',
-      amount: 10000,
-      currency: 'INR',
-      name: 'Your Company Name',
-      description: 'Test Transaction',
-      image: 'https://ibb.co/WzcXW0Z',
-      handler: (response) => {
-        console.log(response.razorpay_payment_id);
-        alert('Payment successful! Redirecting to the thank you page.');
-        sendEmail();
-
-        // Navigate to the "Thank You" page
-        navigate('/thank-you'); // Redirect to a separate thank you page
-      },
-      prefill: {
-        email: formRef.current['user_email'].value,
-      },
-      notes: {
-        address: 'Corporate Office Address',
-      },
-      theme: {
-        color: '#F37254',
-      },
-    };
-
-    const razorpay = new window.Razorpay(options);
-    razorpay.open();
-  }; */}
-
   return (
     <div className="home">
       <canvas ref={canvasRef} className="background-canvas" />
@@ -147,7 +43,7 @@ function Home() {
             </a>
             <nav className="nav"></nav>
             <Link to="/contact">
-              <button className="start-button">Sign Up</button>
+              <button className="start-button">Job Seeker</button>
             </Link>
           </div>
         </header>
@@ -155,54 +51,92 @@ function Home() {
         <main className="main">
           <div className="hero-content">
             <h1 className="title">
-              World-class brands
+              Your Partner in 
               <br />
-              for tech startups.
+              Landing Your Dream Job
             </h1>
             <p className="description">
-              Your startup deserves more than generic design. We create brands
-              and websites tailored for innovators like you.
+              Are you ready to take the next step in your career? We’re here to guide you every step of the way.
             </p>
             <div className="button-group">
               <Link to="/contact">
-                <button className="secondary-button">Sign Up</button>
+                <button className="secondary-button">Job Seeker</button>
               </Link>
-              <button className="secondary-button" onClick={scrollToFormSection}>
-                VIEW WORK ↓
+              <button className="secondary-button" onClick={handleRecruiterClick}>
+               Recruiter
               </button>
             </div>
           </div>
 
           <div className="form-section" id="form-section">
             <h2 className="form-heading">
-              Let us help you unlock your potential and secure the job you
-              deserve!
-            </h2> {/* do here*/}
-            <div
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '50vh',
-        overflow: 'hidden',
-        background: 'url(https://media.giphy.com/media/18304345255962034739/giphy.gif) no-repeat center center fixed', // Using the GIF as the background
-        backgroundSize: 'cover', // Makes sure the GIF covers the entire screen
-      }}
-    >
-      {/* Content displayed over the background */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          color: '#fff',
-          textAlign: 'center',
-        }}
-      >
-        <h1 style={{ fontSize: '4rem' }}>{/* */}</h1>
-        <p>{/* */}</p>
-      </div> {/* do here*/}
-    </div>
+              Let us help you unlock your potential and secure the job you deserve!
+            </h2>
+            {/* Comparison Table */}
+            <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
+              <h1>Why Choose Us?</h1>
+              <table style={{ width: "100%", borderCollapse: "collapse", margin: "20px 0", fontSize: "16px", textAlign: "left" }}>
+                <thead>
+                  <tr>
+                    <th style={{ border: "1px solid #ddd", padding: "12px", backgroundColor: "#f4f4f4", color: "#333", fontWeight: "bold" }}>Features/Services</th>
+                    <th style={{ border: "1px solid #ddd", padding: "12px", backgroundColor: "#f4f4f4", color: "#333", fontWeight: "bold" }}>We Offer</th>
+                    <th style={{ border: "1px solid #ddd", padding: "12px", backgroundColor: "#f4f4f4", color: "#333", fontWeight: "bold" }}>What Others Offer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ backgroundColor: "black" }}>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Pricing</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>₹399 for 2 months</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>High subscription or service fees</td>
+                  </tr>
+                  <tr>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Job Alerts</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Real-time, tailored updates</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Limited or delayed notifications</td>
+                  </tr>
+                  <tr style={{ backgroundColor: "black" }}>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Resume Review</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Included at no extra cost</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Paid or unavailable</td>
+                  </tr>
+                  <tr>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Mock Interviews</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Personalized and expert-led</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Rare or premium-only</td>
+                  </tr>
+                  <tr style={{ backgroundColor: "black" }}>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Career Guidance</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>1-on-1 personalized advice</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Generic or unavailable</td>
+                  </tr>
+                  <tr>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Ease of Use</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Simple, seamless process</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Requires complex apps/websites</td>
+                  </tr>
+                  <tr style={{ backgroundColor: "black" }}>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Direct Recruiter Access</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Yes, with quick response</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Indirect or unavailable</td>
+                  </tr>
+                  <tr>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Response Time</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Fast and responsive</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Often slow</td>
+                  </tr>
+                  <tr style={{ backgroundColor: "black" }}>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Platform Flexibility</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Accessible on any platform</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Limited to specific apps/sites</td>
+                  </tr>
+                  <tr>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Customer Support</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>24/7 dedicated support</td>
+                    <td style={{ border: "1px solid #ddd", padding: "12px" }}>Limited or unavailable</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </main>
       </div>

@@ -7,7 +7,6 @@ import './Home.css';
 function Contact() {
   const formRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [file, setFile] = useState(null); // State for the uploaded file
   const navigate = useNavigate(); // To navigate to the Thank You page
 
   useEffect(() => {
@@ -18,10 +17,9 @@ function Contact() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const sendEmail = async (userData, fileBase64) => {
+  const sendEmail = async (userData) => {
     const templateParams = {
       ...userData,
-      file: fileBase64,
     };
 
     try {
@@ -62,14 +60,8 @@ function Contact() {
           message: formData.get("message"),
         };
 
-        // Convert file to base64
-        let fileBase64 = null;
-        if (file) {
-          fileBase64 = await toBase64(file);
-        }
-
-        // Send email with user data and file
-        sendEmail(userData, fileBase64);
+        // Send email with user data
+        sendEmail(userData);
       },
       prefill: {
         email: formRef.current["user_email"].value,
@@ -84,19 +76,6 @@ function Contact() {
 
     const razorpay = new window.Razorpay(options);
     razorpay.open();
-  };
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]); // Capture the uploaded file
-  };
-
-  const toBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result.split(",")[1]); // Get base64 string
-      reader.onerror = (error) => reject(error);
-    });
   };
 
   return (
@@ -126,8 +105,6 @@ function Contact() {
                 <input type="number" id="amount" name="amount" placeholder="Amount in ₹" required />
                 <label htmlFor="message">Message</label>
                 <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
-                <label htmlFor="file">Upload File</label>
-                <input type="file" id="file" name="file" onChange={handleFileChange} required />
                 <button type="button" onClick={handleRazorpay}>
                   Next
                 </button>
