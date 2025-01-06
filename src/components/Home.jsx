@@ -143,7 +143,7 @@ function Home() {
         <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
           <div className="header-container">
             <a href="/" className="logo">
-              CyberWorld
+              FZNO
             </a>
             <nav className="nav"></nav>
             <Link to="/contact">
