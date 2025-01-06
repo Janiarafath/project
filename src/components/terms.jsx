@@ -86,7 +86,7 @@ const Privacy = () => {
                   e.target.style.color = '#000';
                 }}
               >
-                Sign Up
+                Job Seeker
               </button>
             </Link>
           </nav>

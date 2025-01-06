@@ -58,7 +58,7 @@ function Contact() {
           <div className="header-container">
             <a href="/" className="logo">FZNO</a>
             <nav className="nav"></nav>
-            <Link to="/"><button className="start-button">JOIN NOW</button></Link>
+            <Link to="/"><button className="start-button">Home</button></Link>
           </div>
         </header>
 

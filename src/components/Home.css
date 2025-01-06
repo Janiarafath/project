@@ -418,7 +418,7 @@ button[type="button"]:hover {
 /* Footer styles */
 
 .footer {
-    background-color: #333;
+    background-color: rgb(10, 9, 9);
     color: white;
     padding: 1px;
     text-align: center;

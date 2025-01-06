@@ -86,7 +86,7 @@ const Privacy = () => {
                   e.target.style.color = '#000';
                 }}
               >
-                Sign Up
+                Job Seeker
               </button>
             </Link>
           </nav>
@@ -144,8 +144,7 @@ const Privacy = () => {
         <h2>10. Contact Us</h2>
         <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
         <ul>
-          <li><strong>Email:</strong> [Your Email Address]</li>
-          <li><strong>Phone:</strong> [Your Contact Number]</li>
+          <li><strong>Email:</strong> contactfzno@gmail.com</li>
         </ul>
 
         <p>FZNO is dedicated to respecting your privacy and protecting your data. By using our services, you agree to this Privacy Policy.</p>
