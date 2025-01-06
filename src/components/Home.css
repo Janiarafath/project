@@ -220,14 +220,30 @@ body {
 
 .primary-button,
 .secondary-button {
-    background-color: #f37254;
-    color: #fff;
-    border: 1px solid #f37254;
+    background-color: #ffffff;
+    /* Pure white background */
+    color: #fef6f6;
+    /* Black text color */
+    border: 1px solid #0b0b0b;
+    /* Light gray border */
     padding: 1rem 2rem;
+    /* Spacious padding */
     font-size: 1.1rem;
+    /* Large font size for readability */
     text-transform: uppercase;
+    /* Uppercase text */
     cursor: pointer;
+    /* Pointer cursor */
     transition: all 0.3s ease;
+    /* Smooth transition */
+    border-radius: 9999px;
+    /* Fully rounded corners */
+    font-weight: 500;
+    /* Medium font weight */
+    letter-spacing: 0.05em;
+    /* Slight spacing for modern text look */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow for depth */
 }
 
 
@@ -235,8 +251,14 @@ body {
 
 .primary-button:hover,
 .secondary-button:hover {
-    background-color: #e55a3d;
-    border-color: #e55a3d;
+    background-color: #f9f9f9;
+    /* Slightly darker white on hover */
+    color: #f5f3f3;
+    /* Retain black text */
+    border-color: #d6d6d6;
+    /* Slightly darker border on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Enhanced shadow effect */
 }
 
 
@@ -301,8 +323,8 @@ textarea::placeholder {
 
 button[type="button"] {
     padding: 1rem;
-    background-color: #f37254;
-    color: #fff;
+    background-color: #fefefe;
+    color: rgb(0, 0, 0);
     font-size: 1.2rem;
     text-transform: uppercase;
     border: none;
@@ -315,7 +337,7 @@ button[type="button"] {
 /* Submit button hover effect */
 
 button[type="button"]:hover {
-    background-color: #e55a3d;
+    background-color: #f8f3f2;
 }
 
 
@@ -570,21 +592,38 @@ body {
 /* Start button styling */
 
 .start-button {
-    background-color: #f1f1f1;
-    color: #000;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    border-radius: 4px;
+    background-color: #ffffff;
+    /* Pure white background */
+    color: #000000;
+    /* Black text color */
+    border: 1px solid #e0e0e0;
+    /* Light gray border */
+    padding: 0.6rem 1.2rem;
+    /* Adjust padding for a clean look */
+    font-size: 0.9rem;
+    /* Slightly larger text size */
+    border-radius: 9999px;
+    /* Fully rounded corners (pill shape) */
     cursor: pointer;
+    /* Pointer cursor */
     font-weight: 500;
+    /* Medium font weight */
     letter-spacing: 0.02em;
-    transition: background-color 0.2s ease;
+    /* Slight letter spacing */
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    /* Smooth hover transitions */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow */
 }
 
 .start-button:hover {
-    background-color: #fff;
-    color: #000;
+    background-color: #757271;
+    border-color: #757271;
+    /* Slightly lighter background on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Enhanced shadow effect */
+    color: #000000;
+    /* Retain black text */
 }
 
 
@@ -652,9 +691,9 @@ body {
 
 .primary-button,
 .secondary-button {
-    background-color: #f37254;
-    color: #fff;
-    border: 1px solid #f37254;
+    background-color: #f7edeb;
+    color: rgb(6, 6, 6);
+    border: 1px solid #f8f5f5;
     padding: 1rem 2rem;
     font-size: 1.1rem;
     text-transform: uppercase;
@@ -667,8 +706,8 @@ body {
 
 .primary-button:hover,
 .secondary-button:hover {
-    background-color: #e55a3d;
-    border-color: #e55a3d;
+    background-color: #757271;
+    border-color: #757271;
 }
 
 

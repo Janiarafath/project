@@ -7,7 +7,8 @@ export default function Footer() {
       <MDBContainer className='p-4'></MDBContainer>
 
       <div className="footer text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-      Made with <span style={{ fontSize: '1.2rem', marginRight: '5px' }}>❤️</span>by <a href="https://example.com" style={{ fontWeight: 'bold', color: 'white' }}>Javed</a>
+      OpenAI © 2015–2025
+<a href="https://example.com" style={{ fontWeight: 'bold', color: 'white' }}></a>
       </div>
     
       
