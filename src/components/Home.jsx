@@ -72,7 +72,7 @@ function Home() {
         animationFrameId.current = requestAnimationFrame(animateParticles);
       };
 
-      animateParticles();
+      { /*animateParticles(); */}
 
       return () => {
         cancelAnimationFrame(animationFrameId.current);

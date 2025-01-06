@@ -7,6 +7,7 @@ import './Home.css';
 function Contact() {
   const formRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [file, setFile] = useState(null); // State for the uploaded file
   const navigate = useNavigate(); // To navigate to the Thank You page
 
   useEffect(() => {
@@ -17,49 +18,26 @@ function Contact() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (window.location.pathname === '/contact') {
-      const snowflakeCount = 100;
-      const snowflakesContainer = document.createElement('div');
-      snowflakesContainer.className = 'snow-container';
-      document.body.appendChild(snowflakesContainer);
+  const sendEmail = async (userData, fileBase64) => {
+    const templateParams = {
+      ...userData,
+      file: fileBase64,
+    };
 
-      for (let i = 0; i < snowflakeCount; i++) {
-        const snowflake = document.createElement('div');
-        snowflake.className = 'snowflake';
-        snowflake.style.left = `${Math.random() * 100}%`;
-        snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
-        snowflake.style.animationDelay = `${Math.random() * 5}s`;
-        snowflake.innerHTML = '❄';
-        snowflakesContainer.appendChild(snowflake);
-      }
-
-      return () => {
-        document.body.removeChild(snowflakesContainer);
-      };
-    }
-  }, []);
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_vlhumpe",
-        "template_updated_id",
-        formRef.current,
-        "LJB9OySqh4LPpFqpI"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          alert("Email sent successfully!");
-        },
-        (error) => {
-          console.log(error.text);
-          alert("Failed to send email. Please try again.");
-        }
+    try {
+      const result = await emailjs.send(
+        "service_vlhumpe", // Replace with your service ID
+        "template_updated_id", // Replace with your template ID
+        templateParams,
+        "LJB9OySqh4LPpFqpI" // Replace with your public key
       );
+      console.log(result.text);
+      alert("Email sent successfully!");
+      navigate('/thank-you'); // Navigate to the Thank You page
+    } catch (error) {
+      console.error(error.text);
+      alert("Failed to send email. Please try again.");
+    }
   };
 
   const handleRazorpay = () => {
@@ -70,11 +48,28 @@ function Contact() {
       name: "Your Company Name",
       description: "Test Transaction",
       image: "https://ibb.co/WzcXW0Z",
-      handler: (response) => {
+      handler: async (response) => {
         console.log(response.razorpay_payment_id);
         alert("Payment successful! Proceeding to submit email.");
-        sendEmail();
-        navigate('/thank-you');  // Navigate to the Thank You page after payment
+
+        // Get form data
+        const formData = new FormData(formRef.current);
+        const userData = {
+          first_name: formData.get("first_name"),
+          last_name: formData.get("last_name"),
+          user_email: formData.get("user_email"),
+          amount: formData.get("amount"),
+          message: formData.get("message"),
+        };
+
+        // Convert file to base64
+        let fileBase64 = null;
+        if (file) {
+          fileBase64 = await toBase64(file);
+        }
+
+        // Send email with user data and file
+        sendEmail(userData, fileBase64);
       },
       prefill: {
         email: formRef.current["user_email"].value,
@@ -91,14 +86,26 @@ function Contact() {
     razorpay.open();
   };
 
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]); // Capture the uploaded file
+  };
+
+  const toBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(",")[1]); // Get base64 string
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
   return (
     <div className="home">
       <div className="content-wrapper">
         <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
           <div className="header-container">
             <a href="/" className="logo">CyberWorld</a>
-            <nav className="nav">
-            </nav>
+            <nav className="nav"></nav>
             <Link to="/"><button className="start-button">JOIN NOW</button></Link>
           </div>
         </header>
@@ -118,13 +125,9 @@ function Contact() {
                 <label htmlFor="amount">Amount</label>
                 <input type="number" id="amount" name="amount" placeholder="Amount in ₹" required />
                 <label htmlFor="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder="Enter your message"
-                  required
-                ></textarea>
+                <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+                <label htmlFor="file">Upload File</label>
+                <input type="file" id="file" name="file" onChange={handleFileChange} required />
                 <button type="button" onClick={handleRazorpay}>
                   Next
                 </button>
@@ -136,6 +139,7 @@ function Contact() {
     </div>
   );
 }
+
 
 
 const StyledContactForm = styled.div`
@@ -185,8 +189,8 @@ const StyledContactForm = styled.div`
 
     button {
       padding: 12px;
-      background-color: #f37254;
-      color: #ffffff;
+      background-color: white;
+      color: black;
       font-size: 1rem;
       border: none;
       border-radius: 5px;
@@ -195,7 +199,7 @@ const StyledContactForm = styled.div`
       margin-top: 1rem;
 
       &:hover {
-        background-color: #e55a3d;
+        background-color: rgb(169,169,169);
       }
     }
   }

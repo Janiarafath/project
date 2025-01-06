@@ -221,29 +221,29 @@ body {
 .primary-button,
 .secondary-button {
     background-color: #ffffff;
-    /* Pure white background */
     color: #fef6f6;
-    /* Black text color */
     border: 1px solid #0b0b0b;
-    /* Light gray border */
-    padding: 1rem 2rem;
-    /* Spacious padding */
-    font-size: 1.1rem;
-    /* Large font size for readability */
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
-    /* Uppercase text */
     cursor: pointer;
-    /* Pointer cursor */
     transition: all 0.3s ease;
-    /* Smooth transition */
     border-radius: 9999px;
-    /* Fully rounded corners */
     font-weight: 500;
-    /* Medium font weight */
     letter-spacing: 0.05em;
-    /* Slight spacing for modern text look */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    /* Subtle shadow for depth */
+    display: inline-flex;
+    /* Use inline-flex to align text horizontally */
+    justify-content: center;
+    /* Centers content horizontally */
+    align-items: center;
+    /* Optional: ensures vertical alignment */
+    text-align: center;
+    /* Ensures text is centered */
+    height: auto;
+    /* Let height adjust to content */
+    min-height: 50px;
+    /* Minimum height for consistency */
 }
 
 
@@ -252,13 +252,23 @@ body {
 .primary-button:hover,
 .secondary-button:hover {
     background-color: #f9f9f9;
-    /* Slightly darker white on hover */
     color: #f5f3f3;
-    /* Retain black text */
     border-color: #d6d6d6;
-    /* Slightly darker border on hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Enhanced shadow effect */
+}
+
+
+/* Responsive design for mobile devices */
+
+@media (max-width: 480px) {
+    .primary-button,
+    .secondary-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        /* Reduced padding for smaller buttons */
+        min-height: 40px;
+        /* Ensure buttons are not too tall */
+    }
 }
 
 
@@ -325,7 +335,7 @@ button[type="button"] {
     padding: 1rem;
     background-color: #fefefe;
     color: rgb(0, 0, 0);
-    font-size: 1.2rem;
+    font-size: 0.5rem;
     text-transform: uppercase;
     border: none;
     cursor: pointer;
@@ -369,8 +379,8 @@ button[type="button"]:hover {
     }
     .primary-button,
     .secondary-button {
-        font-size: 1rem;
-        padding: 0.8rem 1.8rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
     }
     .form-heading {
         font-size: 1.5rem;
@@ -381,8 +391,8 @@ button[type="button"]:hover {
         padding: 0.8rem;
     }
     button[type="button"] {
-        font-size: 1rem;
-        padding: 0.8rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
     }
 }
 

@@ -7,9 +7,17 @@ export default function Footer() {
       <MDBContainer className='p-4'></MDBContainer>
 
       <div className="footer text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-      OpenAI © 2015–2025
-<a href="https://example.com" style={{ fontWeight: 'bold', color: 'white' }}></a>
-      </div>
+  <p>CyberWorld © 2025 </p>
+  <div>
+    <a href="/terms" style={{ fontWeight: 'bold', color: 'white', marginRight: '15px' }}>
+      Terms and Conditions
+    </a>
+    <a href="/privacy" style={{ fontWeight: 'bold', color: 'white' }}>
+      Privacy Policy
+    </a>
+  </div>
+</div>
+
     
       
     </MDBFooter>
