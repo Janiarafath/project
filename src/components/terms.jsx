@@ -27,7 +27,7 @@ const Privacy = () => {
       >
         <div className="header-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <a href="/" className="logo" style={{ color: '#fff', fontSize: '24px' }}>
-            CyberWorld
+            FZNO
           </a>
           <nav className="nav" style={{ display: 'flex', gap: '20px' }}>
             <Link
@@ -95,14 +95,14 @@ const Privacy = () => {
 
       <main className="privacy-main" style={{ padding: '20px', textAlign: 'left' }}>
       <h1>Terms and Conditions</h1>
-      <p><strong>Effective Date:</strong> [Insert Date]</p>
-      <p>Welcome to [Your Platform Name]! By accessing or using our platform, you agree to comply with these Terms and Conditions. Please read them carefully.</p>
+      
+      <p>Welcome to FZNO! By accessing or using our platform, you agree to comply with these Terms and Conditions. Please read them carefully.</p>
 
       <h2>1. Acceptance of Terms</h2>
       <p>By registering, accessing, or using [Your Platform Name], you agree to these Terms and our Privacy Policy. If you do not agree, please discontinue use of our platform.</p>
 
       <h2>2. Services Provided</h2>
-      <p>[Your Platform Name] provides career-oriented services, including job matching, resume assistance, interview preparation, and job alerts. We do not guarantee job placement or employment outcomes.</p>
+      <p>FZNO provides career-oriented services, including job matching, resume assistance, interview preparation, and job alerts. We do not guarantee job placement or employment outcomes.</p>
 
       <h2>3. User Accounts</h2>
       <p><strong>Eligibility:</strong> You must be at least 18 years old to use our services.</p>

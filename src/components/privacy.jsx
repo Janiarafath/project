@@ -27,7 +27,7 @@ const Privacy = () => {
       >
         <div className="header-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <a href="/" className="logo" style={{ color: '#fff', fontSize: '24px' }}>
-            CyberWorld
+            FZNO
           </a>
           <nav className="nav" style={{ display: 'flex', gap: '20px' }}>
             <Link
@@ -95,7 +95,7 @@ const Privacy = () => {
 
       <main className="privacy-main" style={{ padding: '20px', textAlign: 'left' }}>
         <h1>Privacy Policy</h1>
-        <p>Welcome to CyberWorld. Your privacy is important to us, and we are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our services.</p>
+        <p>Welcome to FZNO. Your privacy is important to us, and we are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our services.</p>
 
         <h2>1. Information We Collect</h2>
         <p>We collect the following types of information:</p>
@@ -148,7 +148,7 @@ const Privacy = () => {
           <li><strong>Phone:</strong> [Your Contact Number]</li>
         </ul>
 
-        <p>CyberWorld is dedicated to respecting your privacy and protecting your data. By using our services, you agree to this Privacy Policy.</p>
+        <p>FZNO is dedicated to respecting your privacy and protecting your data. By using our services, you agree to this Privacy Policy.</p>
       </main>
     </div>
   );
