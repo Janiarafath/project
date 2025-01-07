@@ -56,9 +56,39 @@ function Contact() {
       return;
     }
 
-    // Redirect to the payment URL (replace with your provided payment link)
-    const myPayLink = `https://pay.mypaylink.in/?q=FYptuL&amount=${expectedAmount}&email=${userData.user_email}`;
-    window.location.href = myPayLink;
+    // Use the relative URL for the API request (no need for the full URL)
+    try {
+      const response = await fetch("https://zerotize.in/api_payment_init", { // The proxy in package.json will handle the rest
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          account_id: "vEvsIHVv", // Your Zerotize Account ID
+          secret_key: "WltdNYLC07UED6Xq", // Your Zerotize Secret Key
+          amount: expectedAmount,
+          email: userData.user_email,
+          name: `${userData.first_name} ${userData.last_name}`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Payment initialization failed");
+      }
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        // Redirect the user to the payment link from the API response
+        window.location.href = data.payment_link;
+      } else {
+        alert("Error initiating payment. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to connect to Zerotize. Please try again.");
+    }
 
     // After the user returns from payment (with payment status in query params), handle status
     window.addEventListener("load", () => {
@@ -115,7 +145,6 @@ function Contact() {
     </div>
   );
 }
-
 
 const StyledContactForm = styled.div`
   width: 100%;
