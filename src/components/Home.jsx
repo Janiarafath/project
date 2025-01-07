@@ -74,7 +74,7 @@ function Home() {
             </h2>
             {/* Comparison Table */}
             <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
-              <h1>Why Choose Us?</h1>
+              <h2>Why Choose Us?</h2>
               <table style={{ width: "100%", borderCollapse: "collapse", margin: "20px 0", fontSize: "16px", textAlign: "left" }}>
                 <thead>
                   <tr>
@@ -143,6 +143,11 @@ function Home() {
     </div>
   );
 }
+
+
+
+
+
 
 { /* const StyledContactForm = styled.div`
   width: 100%;

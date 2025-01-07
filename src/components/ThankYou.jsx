@@ -6,7 +6,7 @@ function ThankYou() {
   return (
     <div className="thank-you-container">
       <div className="thank-you-content">
-        <h1 className="thank-you-heading">Thank You for Your Submission!</h1>
+        <h2 className="thank-you-heading">Thank You for Your Submission!</h2>
         <p className="thank-you-message">
           We're excited to have you on board! You will receive an email confirmation shortly.
         </p>

@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import emailjs from "@emailjs/browser";
+import React, { useRef, useState, useEffect } from 'react';
+import emailjs from "emailjs-com";
 import styled from "styled-components";
 import { Link, useNavigate } from 'react-router-dom';
 import './Home.css';
@@ -7,7 +7,7 @@ import './Home.css';
 function Contact() {
   const formRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const navigate = useNavigate(); // To navigate to the Thank You page
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +17,7 @@ function Contact() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Function to send email
   const sendEmail = async (userData) => {
     const templateParams = {
       ...userData,
@@ -25,57 +26,55 @@ function Contact() {
     try {
       const result = await emailjs.send(
         "service_vlhumpe", // Replace with your service ID
-        "template_updated_id", // Replace with your template ID
+        "template_gi63opv", // Replace with your template ID
         templateParams,
         "LJB9OySqh4LPpFqpI" // Replace with your public key
       );
       console.log(result.text);
-      alert("Email sent successfully!");
-      navigate('/thank-you'); // Navigate to the Thank You page
+      alert("Payment successful. Confirmation email sent.");
+      navigate('/thank-you');
     } catch (error) {
       console.error(error.text);
       alert("Failed to send email. Please try again.");
     }
   };
 
-  const handleRazorpay = () => {
-    const options = {
-      key: "YOUR_RAZORPAY_KEY",
-      amount: 10000,
-      currency: "INR",
-      name: "Your Company Name",
-      description: "Test Transaction",
-      image: "https://ibb.co/WzcXW0Z",
-      handler: async (response) => {
-        console.log(response.razorpay_payment_id);
-        alert("Payment successful! Proceeding to submit email.");
-
-        // Get form data
-        const formData = new FormData(formRef.current);
-        const userData = {
-          first_name: formData.get("first_name"),
-          last_name: formData.get("last_name"),
-          user_email: formData.get("user_email"),
-          amount: formData.get("amount"),
-          message: formData.get("message"),
-        };
-
-        // Send email with user data
-        sendEmail(userData);
-      },
-      prefill: {
-        email: formRef.current["user_email"].value,
-      },
-      notes: {
-        address: "Corporate Office Address",
-      },
-      theme: {
-        color: "#F37254",
-      },
+  const handlePayment = async () => {
+    const formData = new FormData(formRef.current);
+    const expectedAmount = 399; // Default amount to be paid
+    const userAmount = formData.get("amount") || expectedAmount; // Get form-entered amount if available
+    const userData = {
+      first_name: formData.get("first_name"),
+      last_name: formData.get("last_name"),
+      user_email: formData.get("user_email"),
+      entered_amount: userAmount,
+      message: formData.get("message"),
     };
 
-    const razorpay = new window.Razorpay(options);
-    razorpay.open();
+    if (userAmount !== `${expectedAmount}`) {
+      alert(`The expected payment is ₹${expectedAmount}. Please ensure this is the amount paid.`);
+      return;
+    }
+
+    // Redirect to the payment URL (replace with your provided payment link)
+    const myPayLink = `https://pay.mypaylink.in/?q=FYptuL&amount=${expectedAmount}&email=${userData.user_email}`;
+    window.location.href = myPayLink;
+
+    // After the user returns from payment (with payment status in query params), handle status
+    window.addEventListener("load", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const paymentStatus = urlParams.get("status");
+
+      if (paymentStatus === "success") {
+        sendEmail({
+          ...userData,
+          payment_status: "Payment confirmed.",
+          expected_amount: expectedAmount,
+        });
+      } else if (paymentStatus === "fail") {
+        alert("Payment failed. Please try again.");
+      }
+    });
   };
 
   return (
@@ -101,12 +100,12 @@ function Contact() {
                 <input type="text" id="last_name" name="last_name" placeholder="Your Last Name" required />
                 <label htmlFor="user_email">Email</label>
                 <input type="email" id="user_email" name="user_email" placeholder="Your Email" required />
-                <label htmlFor="amount">Amount</label>
-                <input type="number" id="amount" name="amount" placeholder="Amount in ₹" required />
+                <label htmlFor="amount">Amount (₹399 by default)</label>
+                <input type="number" id="amount" name="amount" placeholder="Amount in ₹" defaultValue="399" readOnly />
                 <label htmlFor="message">Message</label>
                 <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
-                <button type="button" onClick={handleRazorpay}>
-                  Next
+                <button type="button" onClick={handlePayment}>
+                  Pay Now
                 </button>
               </form>
             </StyledContactForm>
@@ -116,7 +115,6 @@ function Contact() {
     </div>
   );
 }
-
 
 
 const StyledContactForm = styled.div`
