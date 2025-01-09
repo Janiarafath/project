@@ -136,7 +136,7 @@ const Privacy = () => {
         <p>Our platform may contain links to third-party websites. We are not responsible for their privacy practices.</p>
 
         <h2>8. International Users</h2>
-        <p>If you access our services from outside [Your Country], your data may be transferred to and processed in [Your Country].</p>
+        <p>If you access our services from outside INDIA, your data may be transferred to and processed in INDIA.</p>
 
         <h2>9. Changes to This Policy</h2>
         <p>We may update this Privacy Policy from time to time. Changes will be communicated through updates on this page.</p>
@@ -144,7 +144,9 @@ const Privacy = () => {
         <h2>10. Contact Us</h2>
         <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
         <ul>
-          <li><strong>Email:</strong> contactfzno@gmail.com</li>
+          <li><a href="mailto:contactfzno@gmail.com" className="contact-support-button">
+          Contact Support
+        </a></li>
         </ul>
 
         <p>FZNO is dedicated to respecting your privacy and protecting your data. By using our services, you agree to this Privacy Policy.</p>

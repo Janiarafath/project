@@ -99,7 +99,7 @@ const Privacy = () => {
       <p>Welcome to FZNO! By accessing or using our platform, you agree to comply with these Terms and Conditions. Please read them carefully.</p>
 
       <h2>1. Acceptance of Terms</h2>
-      <p>By registering, accessing, or using [Your Platform Name], you agree to these Terms and our Privacy Policy. If you do not agree, please discontinue use of our platform.</p>
+      <p>By registering, accessing, or using FZNO, you agree to these Terms and our Privacy Policy. If you do not agree, please discontinue use of our platform.</p>
 
       <h2>2. Services Provided</h2>
       <p>FZNO provides career-oriented services, including job matching, resume assistance, interview preparation, and job alerts. We do not guarantee job placement or employment outcomes.</p>
@@ -119,7 +119,7 @@ const Privacy = () => {
       </ul>
 
       <h2>5. Intellectual Property</h2>
-      <p>All content on [Your Platform Name], including text, graphics, logos, and software, is owned by or licensed to us. Users may not copy, distribute, or modify any content without our written consent.</p>
+      <p>All content on FZNO, including text, graphics, logos, and software, is owned by or licensed to us. Users may not copy, distribute, or modify any content without our written consent.</p>
 
       <h2>6. Payments and Refunds</h2>
       <p>Certain services may require payment. Fees are clearly outlined during the purchase process.</p>
@@ -145,8 +145,9 @@ const Privacy = () => {
       <h2>11. Contact Us</h2>
       <p>For questions or concerns regarding these Terms, contact us at:</p>
       <ul>
-        <li><strong>Email:</strong> [Your Email Address]</li>
-        <li><strong>Phone:</strong> [Your Contact Number]</li>
+       <li><a href="mailto:contactfzno@gmail.com" className="contact-support-button">
+      Contact Support
+      </a></li>
       </ul>
     </main>
     </div>

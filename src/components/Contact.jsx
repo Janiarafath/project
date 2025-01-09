@@ -107,8 +107,8 @@ function Contact() {
                 <label htmlFor="phone_number">Phone Number</label>
                 <input type="number" id="phone_number" name="phone_number" placeholder="Your Phone Number" required />
 
-                <label htmlFor="payment_link">Payment Link</label>
-                <a href="https://pay.mypaylink.in/?q=4r1MZJ" target="_blank" rel="noopener noreferrer">Click here to make payment</a>
+                <label htmlFor="payment_link">Payment</label>
+                <a href="https://fzno.netlify.app/pay/?pn=FZNO&pa=8643853747@ptaxis&cu=INR&am=399" target="_blank" rel="noopener noreferrer">Visit our site and scan the QR code to make a payment.</a>
 
                 <label htmlFor="payment_screenshot">Upload Payment Screenshot</label>
                 <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required />
