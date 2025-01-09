@@ -90,7 +90,7 @@ function Contact() {
 
         <main className="main">
           <div className="form-section">
-            <h2 className="form-heading">Complete Your Payment and Share Details</h2>
+            <h2 className="form-heading">Let us help you unlock your potential and secure the job you deserve!</h2>
             <StyledContactForm>
               <form ref={formRef} onSubmit={sendEmail}>
                 <h2>Payment Details</h2>
