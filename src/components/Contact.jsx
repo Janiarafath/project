@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,14 +8,6 @@ function Contact() {
   const formRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const uploadImageToImgBB = async (file) => {
     const formData = new FormData();
@@ -42,7 +34,8 @@ function Contact() {
     }
   };
 
-  const sendEmail = async () => {
+  const sendEmail = async (e) => {
+    e.preventDefault(); // Prevent form submission to handle asynchronously
     const formData = new FormData(formRef.current);
     const userData = {
       first_name: formData.get("first_name"),
@@ -54,7 +47,15 @@ function Contact() {
 
     try {
       // Upload the file to ImgBB
-      const imageUrl = await uploadImageToImgBB(userData.payment_screenshot);
+      const fileInput = formRef.current.querySelector('input[name="payment_screenshot"]');
+      const file = fileInput.files[0]; // Get the selected file
+
+      if (!file) {
+        alert("Please select an image to upload.");
+        return;
+      }
+
+      const imageUrl = await uploadImageToImgBB(file);
       if (!imageUrl) return; // If image upload failed, stop execution
 
       // Replace payment_screenshot with the ImgBB URL
@@ -71,7 +72,7 @@ function Contact() {
       alert("Email sent successfully!");
       navigate("/thank-you"); // Navigate to Thank You page
     } catch (error) {
-      console.error(error.text);
+      console.error("Error sending email:", error);
       alert("Failed to send email. Please try again.");
     }
   };
@@ -91,7 +92,7 @@ function Contact() {
           <div className="form-section">
             <h2 className="form-heading">Complete Your Payment and Share Details</h2>
             <StyledContactForm>
-              <form ref={formRef} onSubmit={(e) => { e.preventDefault(); sendEmail(); }}>
+              <form ref={formRef} onSubmit={sendEmail}>
                 <h2>Payment Details</h2>
 
                 <label htmlFor="first_name">First Name</label>
