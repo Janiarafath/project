@@ -11,15 +11,15 @@ function ThankYou() {
           We're excited to have you on board! You will receive an email confirmation shortly.
         </p>
         <p className="thank-you-details">
-          If you have any questions or need assistance, feel free to <a href="mailto:support@yourcompany.com">contact us</a>.
+          If you have any questions or need assistance, feel free to <a href="mailto:contactfzno@gmail.com">contact us</a>.
         </p>
         <div className="thank-you-actions">
           <Link to="/" className="go-home-button">
             Go to Homepage
           </Link>
-          <Link to="/contact" className="contact-support-button">
+          <a href="mailto:contactfzno@gmail.com" className="contact-support-button">
             Contact Support
-          </Link>
+          </a>
         </div>
       </div>
     </div>
