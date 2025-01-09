@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link, useNavigate } from 'react-router-dom'; // useNavigate is added
 import './Home.css';
 
-function Contact() {
+function Recuriter() {
   const formRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();  // Initialize useNavigate
@@ -203,4 +203,4 @@ const StyledContactForm = styled.div`
   }
 `;
 
-export default Contact;
+export default Recuriter;

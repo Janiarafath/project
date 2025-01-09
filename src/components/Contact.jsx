@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import emailjs from "emailjs-com";
+import React, { useRef, useEffect, useState } from 'react';
+import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import { Link, useNavigate } from 'react-router-dom';
 import './Home.css';
@@ -17,94 +17,63 @@ function Contact() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Function to send email
-  const sendEmail = async (userData) => {
-    const templateParams = {
-      ...userData,
+  const uploadImageToImgBB = async (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const response = await fetch(
+        `https://api.imgbb.com/1/upload?key=93a9fbb7feb9c5c091568c00d5ae05de`, // Your ImgBB API key
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const data = await response.json();
+      if (data.error) {
+        alert(`ImgBB upload failed: ${data.error.message}`);
+        return null;
+      }
+      return data.data.url; // Return the image URL
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      alert("Failed to upload image.");
+      return null;
+    }
+  };
+
+  const sendEmail = async () => {
+    const formData = new FormData(formRef.current);
+    const userData = {
+      first_name: formData.get("first_name"),
+      last_name: formData.get("last_name"),
+      email_address: formData.get("email_address"),
+      phone_number: formData.get("phone_number"),
+      payment_screenshot: formData.get("payment_screenshot"), // File upload
     };
 
     try {
+      // Upload the file to ImgBB
+      const imageUrl = await uploadImageToImgBB(userData.payment_screenshot);
+      if (!imageUrl) return; // If image upload failed, stop execution
+
+      // Replace payment_screenshot with the ImgBB URL
+      userData.payment_screenshot = imageUrl;
+
+      // Send email using EmailJS
       const result = await emailjs.send(
-        "service_vlhumpe", // Replace with your service ID
-        "template_gi63opv", // Replace with your template ID
-        templateParams,
-        "LJB9OySqh4LPpFqpI" // Replace with your public key
+        "service_vlhumpe", // Your service ID
+        "template_gi63opv", // Your template ID
+        userData,
+        "LJB9OySqh4LPpFqpI" // Your public key
       );
       console.log(result.text);
-      alert("Payment successful. Confirmation email sent.");
-      navigate('/thank-you');
+      alert("Email sent successfully!");
+      navigate("/thank-you"); // Navigate to Thank You page
     } catch (error) {
       console.error(error.text);
       alert("Failed to send email. Please try again.");
     }
-  };
-
-  const handlePayment = async () => {
-    const formData = new FormData(formRef.current);
-    const expectedAmount = 399; // Default amount to be paid
-    const userAmount = formData.get("amount") || expectedAmount; // Get form-entered amount if available
-    const userData = {
-      first_name: formData.get("first_name"),
-      last_name: formData.get("last_name"),
-      user_email: formData.get("user_email"),
-      entered_amount: userAmount,
-      message: formData.get("message"),
-    };
-
-    if (userAmount !== `${expectedAmount}`) {
-      alert(`The expected payment is ₹${expectedAmount}. Please ensure this is the amount paid.`);
-      return;
-    }
-
-    // Use the relative URL for the API request (no need for the full URL)
-    try {
-      const response = await fetch("https://zerotize.in/api_payment_init", { // The proxy in package.json will handle the rest
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          account_id: "vEvsIHVv", // Your Zerotize Account ID
-          secret_key: "WltdNYLC07UED6Xq", // Your Zerotize Secret Key
-          amount: expectedAmount,
-          email: userData.user_email,
-          name: `${userData.first_name} ${userData.last_name}`,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Payment initialization failed");
-      }
-
-      const data = await response.json();
-
-      if (data.status === "success") {
-        // Redirect the user to the payment link from the API response
-        window.location.href = data.payment_link;
-      } else {
-        alert("Error initiating payment. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Failed to connect to Zerotize. Please try again.");
-    }
-
-    // After the user returns from payment (with payment status in query params), handle status
-    window.addEventListener("load", () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const paymentStatus = urlParams.get("status");
-
-      if (paymentStatus === "success") {
-        sendEmail({
-          ...userData,
-          payment_status: "Payment confirmed.",
-          expected_amount: expectedAmount,
-        });
-      } else if (paymentStatus === "fail") {
-        alert("Payment failed. Please try again.");
-      }
-    });
   };
 
   return (
@@ -114,29 +83,36 @@ function Contact() {
           <div className="header-container">
             <a href="/" className="logo">FZNO</a>
             <nav className="nav"></nav>
-            <Link to="/"><button className="start-button">JOIN NOW</button></Link>
+            <Link to="/"><button className="start-button">Home</button></Link>
           </div>
         </header>
 
         <main className="main">
           <div className="form-section">
-            <h2 className="form-heading">Let us help you unlock your potential and secure the job you deserve!</h2>
+            <h2 className="form-heading">Complete Your Payment and Share Details</h2>
             <StyledContactForm>
-              <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
-                <h2>Interested?</h2>
+              <form ref={formRef} onSubmit={(e) => { e.preventDefault(); sendEmail(); }}>
+                <h2>Payment Details</h2>
+
                 <label htmlFor="first_name">First Name</label>
                 <input type="text" id="first_name" name="first_name" placeholder="Your First Name" required />
+
                 <label htmlFor="last_name">Last Name</label>
                 <input type="text" id="last_name" name="last_name" placeholder="Your Last Name" required />
-                <label htmlFor="user_email">Email</label>
-                <input type="email" id="user_email" name="user_email" placeholder="Your Email" required />
-                <label htmlFor="amount">Amount (₹399 by default)</label>
-                <input type="number" id="amount" name="amount" placeholder="Amount in ₹" defaultValue="399" readOnly />
-                <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
-                <button type="button" onClick={handlePayment}>
-                  Pay Now
-                </button>
+
+                <label htmlFor="email_address">Email Address</label>
+                <input type="email" id="email_address" name="email_address" placeholder="Your Email Address" required />
+
+                <label htmlFor="phone_number">Phone Number</label>
+                <input type="number" id="phone_number" name="phone_number" placeholder="Your Phone Number" required />
+
+                <label htmlFor="payment_link">Payment Link</label>
+                <a href="https://pay.mypaylink.in/?q=4r1MZJ" target="_blank" rel="noopener noreferrer">Click here to make payment</a>
+
+                <label htmlFor="payment_screenshot">Upload Payment Screenshot</label>
+                <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required />
+
+                <button type="submit">Submit</button>
               </form>
             </StyledContactForm>
           </div>
@@ -191,6 +167,17 @@ const StyledContactForm = styled.div`
       }
     }
 
+    a {
+      color: #f37254;
+      font-weight: bold;
+      text-decoration: none;
+      margin-bottom: 1rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     button {
       padding: 12px;
       background-color: white;
@@ -234,4 +221,3 @@ const StyledContactForm = styled.div`
 `;
 
 export default Contact;
-
